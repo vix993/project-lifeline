@@ -26,7 +26,7 @@ SECRET_KEY = 'ch_2uku2qk%7@9u@(6*jl(%%-g8wpb4*61cxee@974)+=lx#84'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['project-lifeline.herokuapp.com']
+ALLOWED_HOSTS = ['project-lifeline.herokuapp.com', 'localhost']
 
 
 # Application definition
