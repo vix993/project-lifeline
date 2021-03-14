@@ -18,9 +18,23 @@
 
 ## Motivation
 
-I was asked to create an api that simulates a tool to help the survivors of a Zombie apocalypse with their basic needs. They can register their details and inventories, update their locations, flag survivors that are infected and execute trades. There is also a reports endpoint showing some basic statistics.
+I was tasked with creating an API for the purpose of communication during a Zombie apocalypse.
 
-You can run it by cloning the repository. Navigating into the src directory. Executing the command `python manage.py migrate --run-syncdb` then `python manage.py runserver`. You can also run the unit tests like so: `python manage.py test`.
+What came out was [`Project Lifeline`](https://project-lifeline.herokuapp.com/).
+
+With this application, survivors can register their details and inventories, update their location, flag other survivors as infected and execute trades.
+
+There is also a reports endpoint for showing platform analysis.
+
+You can run it with the following commands: 
+    - `git_clone https://github.com/vix993/project-lifeline.git`
+    - `cd project-lifeline`
+    - `virtualenv django_env`
+    - `source django_env/bin/activate`
+    - `pip install -r requirements.txt`
+    - `python manage.py makemigrations` + `python manage.py migrate`
+    - `python manage.py runserver`
+    - `python manage.py test` to run tests
 
 ## Requirements
 
