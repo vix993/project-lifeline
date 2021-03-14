@@ -12,6 +12,10 @@
     - [Reports](#Reports)
 4. [Additional Notes](#API)
 
+## Status
+
+![example workflow](https://github.com/vix993/project-lifeline/actions/workflows/test.yml/badge.svg)
+
 ## Motivation
 
 I was asked to create an api that simulates a tool to help the survivors of a Zombie apocalypse with their basic needs. They can register their details and inventories, update their locations, flag survivors that are infected and execute trades. There is also a reports endpoint showing some basic statistics.
