@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      uses: satak/webrequest-action@master
-      with:
-        url: https://project-lifeline.herokuapp.com/api/survivor/
-        method: GET
-        run: |
-          $output = '${{ steps.webhook.outputs.output }}' | ConvertFrom-Json
-          Write-Host "Time from output $($output.time) statusCode $($output.statusCode) data $($output.data)"
+      - uses: satak/webrequest-action@master
+        with:
+          url: https://project-lifeline.herokuapp.com/api/survivor/
+          method: GET
+          run: |
+            $output = '${{ steps.webhook.outputs.output }}' | ConvertFrom-Json
+            Write-Host "Time from output $($output.time) statusCode $($output.statusCode) data $($output.data)"
