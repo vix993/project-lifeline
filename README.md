@@ -14,7 +14,7 @@
 
 ## Status
 
-![example workflow](https://github.com/vix993/project-lifeline/actions/workflows/test.yml/badge.svg)
+![Tests](https://github.com/vix993/project-lifeline/actions/workflows/test.yml/badge.svg)  ![Health Check](https://github.com/vix993/project-lifeline/actions/workflows/health_check.yml/badge.svg)
 
 ## Motivation
 
