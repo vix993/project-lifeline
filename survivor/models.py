@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator, MinLengthValidator
+from .validators import Validation
 
 from rest_framework.reverse import reverse as api_reverse
 
@@ -10,7 +11,7 @@ from rest_framework.reverse import reverse as api_reverse
 class Survivor(models.Model):
     name = models.CharField(
         max_length=120, blank=False, default=None,
-        validators=[MinLengthValidator(2)]
+        validators=[MinLengthValidator(2), Validation().validate_name]
     )
     age = models.DecimalField(
         max_digits=3, decimal_places=0, blank=False, default=None,
@@ -18,7 +19,7 @@ class Survivor(models.Model):
     )
     gender = models.CharField(
         max_length=1, blank=False, default=None,
-        validators=[MinLengthValidator(1)]
+        validators=[MinLengthValidator(1), Validation().validate_gender]
     )
     latitude = models.DecimalField(
         max_digits=12, decimal_places=10, default=None, blank=False,
@@ -31,7 +32,7 @@ class Survivor(models.Model):
     )
     items = models.CharField(
         max_length=120, default=None,
-        validators=[MinLengthValidator(1)]
+        validators=[MinLengthValidator(1), Validation().validate_item]
     )
     infected = models.BooleanField(default=False)
     infection_marks = models.DecimalField(max_digits=2, decimal_places=0, default=0)
