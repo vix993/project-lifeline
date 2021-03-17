@@ -29,12 +29,14 @@ There is also a reports endpoint for showing platform analysis.
 You can run it with the following commands: 
 - `git_clone https://github.com/vix993/project-lifeline.git`
 - `cd project-lifeline`
-- `virtualenv django_env`
-- `source django_env/bin/activate`
-- `pip install -r requirements.txt`
-- `python manage.py makemigrations` + `python manage.py migrate`
-- `python manage.py runserver`
-- `python manage.py test` to run tests
+- `bash init.sh`
+- It will perform the following:
+    - `python manage.py test` to run tests
+    - `virtualenv django_env`
+    - `source django_env/bin/activate`
+    - `pip install -r requirements.txt`
+    - `python manage.py makemigrations` + `python manage.py migrate`
+    - `python manage.py runserver`
 
 ## Requirements
 
