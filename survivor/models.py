@@ -1,5 +1,6 @@
 from django.db import models
 
+from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator, MinLengthValidator
 from .validators import Validation
 
@@ -45,3 +46,16 @@ class Survivor(models.Model):
 
     def get_api_url(self, request=None):
         return api_reverse("api-survivor:ru-survivor", kwargs={'pk': self.pk}, request=request)
+
+class FlagAsInfected(models.Model):
+    flaged_pk = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
+    flager_pk = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
+
+    def __str__(self):
+        return str(self.flager_pk)
+    
+    def get_absolute_url(self):
+        return reverse("api-survivor:flag-create", kwargs={'pk': self.pk}, request=request)
+    
+    def get_api_url(self, request=None):
+        return api_reverse("api-survivor:flag-create", kwargs={'pk': self.pk}, request=request)
