@@ -28,7 +28,10 @@ class CreateSurvivorAPIView(mixins.CreateModelMixin, generics.ListAPIView):
         return qs
     
     def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+        try:
+            return self.create(request, *args, **kwargs)
+        except Exception as e:
+            return HttpResponse(status=400, content=e)
 
     def get_serializer_context(self, *args, **kwargs):
         return {"request": self.request}
