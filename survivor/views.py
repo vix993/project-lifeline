@@ -6,7 +6,7 @@ from rest_framework import generics, serializers, mixins
 from rest_framework.decorators import api_view
 
 from .serializers import CreateSurvivorSerializer, SurvivorRetreiveUpdateSerializer, FlagAsInfectedSerializer, TradeItemSerializer
-from .models import Survivor
+from .models import Survivor, FlagAsInfected
 
 from .services.flag_as_infected import do_flag_as_infected
 from .services.trade import get_item_sets_and_check_if_infected, get_stocks, validate_stock,\
