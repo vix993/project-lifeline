@@ -62,9 +62,9 @@ class FlagAsInfected(models.Model):
 
 class TradeItem(models.Model):
     buyer_pk = models.DecimalField(max_digits=10, decimal_places=0,
-                                   validators=[MaxValueValidator(Validation().validate_pk), MinValueValidator(1)])
+                                   validators=[MinValueValidator(1)])
     seller_pk = models.DecimalField(max_digits=10, decimal_places=0,
-                                    validators=[MaxValueValidator(Validation().validate_pk), MinValueValidator(1)])
+                                    validators=[MinValueValidator(1)])
     offered_items = models.CharField(max_length=120, validators=[Validation().validate_item])
     requested_items = models.CharField(max_length=120, validators=[Validation().validate_item])
 

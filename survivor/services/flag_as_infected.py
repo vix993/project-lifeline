@@ -1,9 +1,11 @@
 from survivor.models import Survivor, FlagAsInfected
 
+from rest_framework import serializers
+
 def do_flag_as_infected(request):
     qs = FlagAsInfected.objects.\
-        filter(flager_pk__exact=self.request.data['flager_pk']).\
-        filter(flaged_pk__exact=self.request.data['flaged_pk'])
+        filter(flager_pk__exact=request.data['flager_pk']).\
+        filter(flaged_pk__exact=request.data['flaged_pk'])
     to_increment = int(request.data['flaged_pk']) - 1
     if qs:
         raise serializers.ValidationError("We have already received your flag")
