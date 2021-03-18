@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: satak/webrequest-action@master
         with:
-          url: https://project-lifeline.herokuapp.com/api/survivor/
+          url: https://project-lifeline.herokuapp.com/
           method: GET
           run: |
             $output = '${{ steps.webhook.outputs.output }}' | ConvertFrom-Json
