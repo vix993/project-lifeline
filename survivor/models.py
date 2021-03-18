@@ -59,3 +59,20 @@ class FlagAsInfected(models.Model):
     
     def get_api_url(self, request=None):
         return api_reverse("api-survivor:flag-create", kwargs={'pk': self.pk}, request=request)
+
+class TradeItem(models.Model):
+    buyer_pk = models.DecimalField(max_digits=10, decimal_places=0,
+                                   validators=[MinValueValidator(1)])
+    seller_pk = models.DecimalField(max_digits=10, decimal_places=0,
+                                    validators=[MinValueValidator(1)])
+    offered_items = models.CharField(max_length=120, validators=[Validation().validate_item])
+    requested_items = models.CharField(max_length=120, validators=[Validation().validate_item])
+
+    def __str__(self):
+        return self.buyer_pk
+
+    def validate_offered_items(self):
+        print(self.offered_items)
+
+    def get_absolute_url(self):
+        return reverse("api-survivor:trade-request", kwargs={'pk': self.pk}, request=request)
