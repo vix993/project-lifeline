@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from survivor.models import Survivor
+from survivor.models import Survivor, FlagAsInfected
 
 class CreateSurvivorSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField(read_only=True)
@@ -52,3 +52,16 @@ class SurvivorRetreiveUpdateSerializer(serializers.ModelSerializer):
             'infected',
             'infection_marks',
         ]
+
+class FlagAsInfectedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FlagAsInfected
+        fields = [
+            'pk',
+            'flaged_pk',
+            'flager_pk'
+        ]
+
+        def get_url(self, obj):
+            request = self.context.get("request")
+            return obj.get_api_url(request=request)

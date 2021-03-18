@@ -4,8 +4,10 @@ from django.http import HttpResponse
 from rest_framework import generics, serializers, mixins
 from rest_framework.decorators import api_view
 
-from .serializers import CreateSurvivorSerializer, SurvivorRetreiveUpdateSerializer
+from .serializers import CreateSurvivorSerializer, SurvivorRetreiveUpdateSerializer, FlagAsInfectedSerializer
 from .models import Survivor
+
+from .services.flag_as_infected import do_flag_as_infected
 
 
 @api_view(['GET'])
@@ -45,3 +47,14 @@ class RetrieveUpdateSurvivorView(generics.RetrieveUpdateAPIView):
     
     def get_serializer_context(self, *args, **kwargs):
         return {"request": self.request}
+
+class CreateFlagAPIView(mixins.RetrieveModelMixin, generics.ListCreateAPIView):
+    lookup_field = 'pk'
+    serializer_class = FlagAsInfectedSerializer
+
+    def get_queryset(self):
+        return FlagAsInfected.objects.all()
+
+    def post(self, request, *args, **kwargs):
+        do_flag_as_infected(request)
+        return self.create(request, *args, **kwargs)
