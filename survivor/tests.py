@@ -107,7 +107,7 @@ class FlagAsInfectedAPITestCase(APITestCase):
             name='NAME NAME NAMEY NAME', age=20, gender='M', latitude='11', longitude='22',
             items='Fiji Water:13;Campbell Soup:17;First Aid Pouch:18;AK47:652', infection_marks='4'
         )
-        url = api_reverse("api-postsurvivor:flag-r")
+        url = api_reverse("api-survivor:flag-create")
         data = {"flaged_pk": "1", "flager_pk": "2"}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
