@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from survivor.models import Survivor, FlagAsInfected
+from survivor.models import Survivor, FlagAsInfected, TradeItem
 
 class CreateSurvivorSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField(read_only=True)
@@ -19,9 +19,11 @@ class CreateSurvivorSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['infected']
     infection_marks = serializers.HiddenField(default=0)
+
     def get_url(self, obj):
         request = self.context.get("request")
         return obj.get_api_url(request=request)
+
     def validate_name(self, value):
         qs = Survivor.objects.filter(name__iexact=value)
         if self.instance:
@@ -65,3 +67,13 @@ class FlagAsInfectedSerializer(serializers.ModelSerializer):
         def get_url(self, obj):
             request = self.context.get("request")
             return obj.get_api_url(request=request)
+
+class TradeItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TradeItem
+        fields = [
+            'seller_pk',
+            'buyer_pk',
+            'offered_items',
+            'requested_items',
+        ]
