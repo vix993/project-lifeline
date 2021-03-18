@@ -1,5 +1,5 @@
 python manage.py test
-virutalenv django_env
+virtualenv django_env
 source django_env/bin/activate
 pip install -r requirements.txt
 python manage.py makemigrations
