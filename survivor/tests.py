@@ -99,7 +99,7 @@ class FlagAsInfectedAPITestCase(APITestCase):
             flager_pk='1', flaged_pk='2'
         )
     def test_flag_post(self):
-        Survivort.objects.create(
+        Survivor.objects.create(
             name='NAME NAME NMAME', age=20, gender='M', latitude='11', longitude='22',
             items='Fiji Water:13;Campbell Soup:17;First Aid Pouch:18;AK47:652', infection_marks='4'
         )
