@@ -101,7 +101,7 @@ Visualize flag history
 Create a trade request between two survivors if both parties have sufficient stock and the value of the requests is equal.
 Update inventories if validation passes.
 ##### Endpoint
-`POST /api/marketplace/`
+`POST /api/survivor/trade/`
 ##### Request Parameters
 `{
     "seller_pk": "1",
