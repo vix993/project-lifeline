@@ -86,5 +86,3 @@ class Reports(models.Model):
     average_ak47 = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
     points_lost = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
     
-    def __str__(self):
-        return str(self)

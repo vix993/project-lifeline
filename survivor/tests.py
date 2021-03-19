@@ -186,7 +186,6 @@ class TradeItemAPITestCase(APITestCase):
                 "requested_items": "Fiji Water:0;Campbell Soup:0;First Aid Pouch:0;AK47:4"}
         response = self.client.post(urltrade, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        print(response.data)
     def test_correct_trade_outcome(self):
         Survivor.objects.create(
             name='NEW NAME NAME', age=20, gender='M', latitude='11', longitude='22',
@@ -236,7 +235,7 @@ class ReportsAPITestCase(APITestCase):
             items='Fiji Water:13;Campbell Soup:17;First Aid Pouch:18;AK47:652'
         )
     def test_report_get(self):
-        url = api_reverse("api-survivor:reports-retrieve-update", '1')
+        url = api_reverse("api-survivor:reports-retrieve-update")
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         print(response.data)
