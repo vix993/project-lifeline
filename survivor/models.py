@@ -76,3 +76,15 @@ class TradeItem(models.Model):
 
     def get_absolute_url(self):
         return reverse("api-survivor:trade-request", kwargs={'pk': self.pk}, request=request)
+
+class Reports(models.Model):
+    percentage_infected = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
+    percentage_healthy = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
+    average_water = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
+    average_soup = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
+    average_pouch = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
+    average_ak47 = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
+    points_lost = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
+    
+    def __str__(self):
+        return str(self.pk)

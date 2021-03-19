@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from survivor.models import Survivor, FlagAsInfected, TradeItem
+from survivor.models import Survivor, FlagAsInfected, TradeItem, Reports
 
 class CreateSurvivorSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField(read_only=True)
@@ -76,4 +76,26 @@ class TradeItemSerializer(serializers.ModelSerializer):
             'buyer_pk',
             'offered_items',
             'requested_items',
+        ]
+
+class ReportsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reports
+        fields = [
+            'percentage_infected',
+            'percentage_healthy',
+            'average_water',
+            'average_soup',
+            'average_pouch',
+            'average_ak47',
+            'points_lost',
+        ]
+        read_only_fields = [
+            'percentage_infected',
+            'percentage_healthy',
+            'average_water',
+            'average_soup',
+            'average_pouch',
+            'average_ak47',
+            'points_lost',
         ]
