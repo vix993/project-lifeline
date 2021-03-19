@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)$', RetrieveUpdateSurvivorView.as_view(), name='ru-survivor'),
     url(r'flag/$', CreateFlagAPIView.as_view(), name='flag-create'),
     url(r'trade/$', CreateItemTradeAPIView.as_view(), name='trade-create'),
-    url(r'reports/(?P<pk>\d+)$', ReportsView.as_view(), name='reports-retrieve-update')
+    url(r'reports/', ReportsView.as_view(), name='reports-retrieve-update')
 ]

@@ -87,4 +87,4 @@ class Reports(models.Model):
     points_lost = models.CharField(max_length=120, blank=False, validators=[Validation().validate_pk])
     
     def __str__(self):
-        return str(self.pk)
+        return str(self)
