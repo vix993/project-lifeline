@@ -29,7 +29,7 @@ There is also a reports endpoint for showing platform analysis.
 You can run it with the following commands: 
 - `git_clone https://github.com/vix993/project-lifeline.git`
 - `cd project-lifeline`
-- `instalação de pip e virtualenv`
+- `install pip and virtualenv`
 - `bash init.sh`
 - It will perform the following:
     - `python manage.py test` to run tests
