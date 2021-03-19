@@ -141,7 +141,6 @@ class TradeItemAPITestCase(APITestCase):
                 "requested_items": "Fiji Water:2;Campbell Soup:0;First Aid Pouch:0;AK47:1"}
         response = self.client.post(urltrade, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        #print(response.data)
     def test_invalid_trade_insufficient_resource(self):
         Survivor.objects.create(
             name='NEW NAME NAME', age=20, gender='M', latitude='11', longitude='22',
@@ -156,7 +155,6 @@ class TradeItemAPITestCase(APITestCase):
                 "requested_items": "Fiji Water:0;Campbell Soup:0;First Aid Pouch:0;AK47:4"}
         response = self.client.post(urltrade, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        #print(response.data)
     def test_invalid_trade_with_infected(self):
         Survivor.objects.create(
             name='NEW NAME NAME', age=20, gender='M', latitude='11', longitude='22',
@@ -171,7 +169,6 @@ class TradeItemAPITestCase(APITestCase):
                 "requested_items": "Fiji Water:0;Campbell Soup:0;First Aid Pouch:0;AK47:4"}
         response = self.client.post(urltrade, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        #print(response.data)
     def test_uneven_trade_values(self):
         Survivor.objects.create(
             name='NEW NAME NAME', age=20, gender='M', latitude='11', longitude='22',
@@ -203,7 +200,6 @@ class TradeItemAPITestCase(APITestCase):
         response = self.client.post(urltrade, data, format='json')
         self.assertEqual(Survivor.objects.all()[1].items, post_trade_data)
         self.assertEqual(Survivor.objects.all()[0].items, post_trade_data_buyer)
-        print(response.data)
 def test_incorrect_trade_outcome(self):
     Survivor.objects.create(
         name='NEW NAME NAME', age=20, gender='M', latitude='11', longitude='22',
@@ -222,7 +218,6 @@ def test_incorrect_trade_outcome(self):
     self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
     self.assertEqual(Survivor.objects.all()[1].items, post_trade_data)
     self.assertEqual(Survivor.objects.all()[0].items, post_trade_data_buyer)
-    print(response.data)
 
 class ReportsAPITestCase(APITestCase):
     def setUp(self):
@@ -238,18 +233,15 @@ class ReportsAPITestCase(APITestCase):
         url = api_reverse("api-survivor:reports-retrieve-update")
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        print(response.data)
         Survivor.objects.create(
             name='New Name FHEUHF', age=20, gender='M', latitude='11', longitude='22',
             items='Fiji Water:27;Campbell Soup:40;First Aid Pouch:18;AK47:652'
         )
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        print(response.data, Reports.objects.all())
         Survivor.objects.create(
             name='New Name FHEUHFddwdw', age=20, gender='M', latitude='11', longitude='22',
             items='Fiji Water:0;Campbell Soup:0;First Aid Pouch:0;AK47:300', infected=True
         )
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        print(response.data, Reports.objects.all())
