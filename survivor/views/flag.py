@@ -10,8 +10,6 @@ from survivor.models import Survivor, FlagAsInfected, Reports
 from survivor.validators import Validation
 
 from survivor.services.flag_as_infected import do_flag_as_infected
-from survivor.services.trade import get_item_sets_and_check_if_infected, get_stocks, validate_stock,\
-    get_trade_values, build_new_trader_stocks
 from survivor.services.utils import make_set
 
 class CreateFlagAPIView(mixins.RetrieveModelMixin, generics.ListCreateAPIView):
