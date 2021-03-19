@@ -1,5 +1,5 @@
-# Project Lifeline:
-## *A Zombie Apocalypse Survival Tool*
+# Lifeline:
+## *Surviving an Apocalypse*
 
 ## Content
 
