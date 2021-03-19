@@ -122,7 +122,7 @@ Update inventories if validation passes.
 #### Retrieve, Update
 Retrieve a report telling us some basic statistics about the current survivors
 ##### Endpoint
-`GET /api/survivor/reports/1`
+`GET /api/survivor/reports/`
 ##### Query parameter
 There is only one reports object that will be updated on request at pk 1
 ##### Response parameter
