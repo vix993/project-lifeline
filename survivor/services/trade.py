@@ -4,6 +4,8 @@ from rest_framework import serializers
 
 from .utils import check_stock, make_set
 
+# Class will execute the trade validation and perform updates
+
 class TradeService:
     def do_trade(self, payload):
         buyer_item_set, seller_item_set = self.get_item_sets_and_check_if_infected(payload)

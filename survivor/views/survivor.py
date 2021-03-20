@@ -7,6 +7,9 @@ from survivor.serializers import CreateSurvivorSerializer, SurvivorRetreiveUpdat
 from survivor.models import Survivor
 from survivor.validators import Validation
 
+# Create new survivor and retrieve all of the current ones
+# query individuals
+
 class CreateSurvivorAPIView(mixins.CreateModelMixin, generics.ListAPIView):
     lookup_field = 'pk'
     serializer_class = CreateSurvivorSerializer
@@ -28,6 +31,9 @@ class CreateSurvivorAPIView(mixins.CreateModelMixin, generics.ListAPIView):
 
     def get_serializer_context(self, *args, **kwargs):
         return {"request": self.request}
+
+# Update survivor current position (lat, long)
+# Get individuals
 
 class RetrieveUpdateSurvivorView(generics.RetrieveUpdateAPIView):
     lookup_field = 'pk'

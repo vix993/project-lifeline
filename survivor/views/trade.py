@@ -8,6 +8,10 @@ from survivor.models import TradeItem
 from survivor.services.trade import TradeService
 from survivor.services.utils import make_set
 
+# Trades have strict rules. Uneven trades are not allowed
+# Survivors must have their claimed resources or enough to
+# fulfill the request
+
 class CreateItemTradeAPIView(mixins.RetrieveModelMixin, generics.CreateAPIView):
     lookup_field = 'pk'
     serializer_class = TradeItemSerializer

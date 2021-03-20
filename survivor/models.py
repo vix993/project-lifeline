@@ -71,9 +71,6 @@ class TradeItem(models.Model):
     def __str__(self):
         return self.buyer_pk
 
-    def validate_offered_items(self):
-        print(self.offered_items)
-
     def get_absolute_url(self):
         return reverse("api-survivor:trade-request", kwargs={'pk': self.pk}, request=request)
 

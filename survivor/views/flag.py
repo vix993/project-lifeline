@@ -12,6 +12,9 @@ from survivor.validators import Validation
 from survivor.services.flag_as_infected import do_flag_as_infected
 from survivor.services.utils import make_set
 
+# A survivor can flag another once. Occurences
+# are stored for validation and reporting
+
 class CreateFlagAPIView(mixins.RetrieveModelMixin, generics.ListCreateAPIView):
     lookup_field = 'pk'
     serializer_class = FlagAsInfectedSerializer
