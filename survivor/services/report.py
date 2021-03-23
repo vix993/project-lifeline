@@ -39,20 +39,22 @@ class ReportService:
         return (qs, qs1)
     
     def tally_infected_items(self, report_features, infected_set):
-        report_features['lost_points'] = report_features['lost_points'] + (int(infected_set[key]) * int(Validation().price_dict[key]))
-        report_features['Fiji Water'] += int(infected_set['Fiji Water'])
-        report_features['Campbell Soup'] += int(infected_set['Campbell Soup'])
-        report_features['First Aid Pouch'] += int(infected_set['First Aid Pouch'])
-        report_features['AK47'] += int(infected_set['AK47'])
+        for key in infected_set:
+            report_features['lost_points'] = report_features['lost_points'] + (int(infected_set[key]) * int(Validation().price_dict[key]))
+            report_features['Fiji Water'] += int(infected_set['Fiji Water'])
+            report_features['Campbell Soup'] += int(infected_set['Campbell Soup'])
+            report_features['First Aid Pouch'] += int(infected_set['First Aid Pouch'])
+            report_features['AK47'] += int(infected_set['AK47'])
         report_features['infected'] += 1
         return report_features
     
     def tally_healthy_items(self, report_features, healthy_set):
         report_features['healthy'] += 1
-        report_features['Fiji Water'] += int(healthy_set['Fiji Water'])
-        report_features['Campbell Soup'] += int(healthy_set['Campbell Soup'])
-        report_features['First Aid Pouch'] += int(healthy_set['First Aid Pouch'])
-        report_features['AK47'] += int(healthy_set['AK47'])
+        for key in healthy_set:
+            report_features['Fiji Water'] += int(healthy_set['Fiji Water'])
+            report_features['Campbell Soup'] += int(healthy_set['Campbell Soup'])
+            report_features['First Aid Pouch'] += int(healthy_set['Campbell Soup'])
+            report_features['AK47'] += int(healthy_set['AK47'])
         return report_features
     
     def save_final_report(self, report_features, report_object):
